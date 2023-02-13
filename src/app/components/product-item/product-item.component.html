@@ -1,12 +1,19 @@
 <div class="product-container">
   <!-- Image -->
-  <img class="product-image" src="{{ product?.url }}" />
+  <a [routerLink]="['/products', product?.id]"
+    ><img class="product-image" src="{{ product?.url }}"
+  /></a>
   <!-- Name -->
   <h1>{{ product?.name }}</h1>
   <!-- Price -->
   <p>{{ product?.price }}</p>
   <!-- Quantity -->
-  <select class="select-input" name="quantity" id="quantity">
+  <select
+    class="select-input"
+    [(ngModel)]="quantity"
+    name="quantity"
+    id="quantity"
+  >
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -19,5 +26,5 @@
     <option value="10">10</option>
   </select>
   <!-- Add to Cart Button -->
-  <button>Add to Cart</button>
+  <button (click)="addProductToCart()">Add to Cart</button>
 </div>

@@ -8,4 +8,11 @@ import { Product } from 'src/utils/types';
 })
 export class ProductItemComponent {
   @Input() product: Product | undefined;
+  quantity: number = 0;
+
+  addProductToCart() {
+    if (this.quantity > 0) {
+      console.log(this.product, +this.quantity);
+    }
+  }
 }
