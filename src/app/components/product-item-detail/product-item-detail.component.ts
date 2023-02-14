@@ -17,7 +17,7 @@ export class ProductItemDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private cartService: CartService
+    private cart: CartService
   ) {}
 
   ngOnInit() {
@@ -31,6 +31,13 @@ export class ProductItemDetailComponent implements OnInit {
   }
 
   addProductToCart() {
-    console.log(this.product, this.quantity);
+    if (this.quantity > 0 && this.product) {
+      let newProduct = this.product;
+      newProduct.quantity = +this.quantity;
+      this.cart.addToCart(newProduct);
+      alert('Product added to cart');
+    } else {
+      alert('Product not added to cart as quantity is 0');
+    }
   }
 }

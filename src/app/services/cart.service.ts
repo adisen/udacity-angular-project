@@ -5,6 +5,11 @@ import { Product } from '../app.component';
   providedIn: 'root',
 })
 export class CartService {
-  cartItem: Product[] = [];
+  private cartItems: Product[] = [];
   constructor() {}
+
+  addToCart(item: Product) {
+    this.cartItems.push(item);
+    console.log(this.cartItems);
+  }
 }
