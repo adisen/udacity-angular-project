@@ -11,6 +11,7 @@ img {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .cart-item-details {
@@ -42,4 +43,25 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 64px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group > input {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+  width: 300px;
+}
+
+button {
+  background-color: rgb(40, 14, 193);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  width: 300px;
+  cursor: pointer;
 }
