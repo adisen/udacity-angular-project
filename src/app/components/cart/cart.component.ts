@@ -9,6 +9,7 @@ import { Product } from 'src/utils/types';
 })
 export class CartComponent implements OnInit {
   cart: Product[] = [];
+  quantity = 0;
   total = 0;
   card = '';
   name = '';
@@ -25,8 +26,6 @@ export class CartComponent implements OnInit {
   }
 
   updateQuantity(id: number, quantity: number | undefined) {
-    console.log(`ID: ${id} Quantity: ${quantity}`);
-    this.cartService.updateCartQuantity(id, quantity);
     this.total = this.cartService.getTotalCost();
   }
 }

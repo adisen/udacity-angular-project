@@ -17,8 +17,8 @@
             name="quantity"
             min="1"
             max="10"
-            (ngModelChange)="updateQuantity(item.id, item.quantity)"
             [(ngModel)]="item.quantity"
+            (ngModelChange)="updateQuantity(item.id, item.quantity)"
           />
         </div>
       </div>

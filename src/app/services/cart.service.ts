@@ -32,28 +32,12 @@ export class CartService {
   }
 
   getTotalCost() {
+    this.totalCost = 0;
     this.cartItems.forEach((item) => {
       if (item.quantity) {
         this.totalCost += item.price * item.quantity;
       }
     });
     return this.totalCost;
-  }
-
-  updateCartQuantity(id: number, quantity: number | undefined) {
-    this.cartItems.forEach((item) => {
-      if (item.id === id) {
-        // update total cost
-        if (item.quantity) {
-          this.totalCost = this.totalCost - item.price * item.quantity;
-        }
-
-        console.log(this.totalCost, item.quantity, quantity);
-
-        item.quantity = quantity;
-        if (quantity) this.totalCost += item.price * quantity;
-        console.log(this.totalCost);
-      }
-    });
   }
 }
