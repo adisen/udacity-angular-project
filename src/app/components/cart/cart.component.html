@@ -34,8 +34,9 @@
           class="form-control"
           id="name"
           name="name"
-          placeholder="Enter name"
-          [(ngModel)]="name"
+          placeholder="(Minimum 3 characters)"
+          [(ngModel)]="userDetails.fullName"
+          (ngModelChange)="updateDisabled()"
         />
       </div>
       <div class="form-group">
@@ -45,8 +46,9 @@
           class="form-control"
           id="address"
           name="address"
-          placeholder="Enter your address"
-          [(ngModel)]="address"
+          placeholder="(Minimum 6 characters)"
+          [(ngModel)]="userDetails.address"
+          (ngModelChange)="updateDisabled()"
         />
       </div>
       <div class="form-group">
@@ -56,13 +58,17 @@
           class="form-control"
           id="card"
           name="card"
-          placeholder="Enter your credit card number"
-          [(ngModel)]="card"
+          minlength="16"
+          maxlength="16"
+          placeholder="16 Digits Credit Card Number"
+          [(ngModel)]="userDetails.creditCard"
+          (ngModelChange)="updateDisabled()"
         />
       </div>
       <button
         [ngStyle]="{ 'background-color': disabled ? 'grey' : 'blue' }"
         [disabled]="disabled"
+        (click)="submitOrder()"
       >
         Submit
       </button>

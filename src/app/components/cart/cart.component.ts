@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-import { Product } from 'src/utils/types';
+import { Product, UserDetail } from 'src/utils/types';
 
 @Component({
   selector: 'app-cart',
@@ -11,21 +12,38 @@ export class CartComponent implements OnInit {
   cart: Product[] = [];
   quantity = 0;
   total = 0;
-  card = '';
-  name = '';
-  address = '';
-  disabled =
-    this.card.length < 3 && this.name.length < 3 && this.address.length < 3;
+  userDetails: UserDetail = {
+    fullName: '',
+    address: '',
+    creditCard: '',
+  };
 
-  constructor(private cartService: CartService) {}
+  disabled =
+    this.userDetails.address.length < 1 &&
+    this.userDetails.creditCard.length < 1 &&
+    this.userDetails.fullName.length < 1;
+
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
     this.total = this.cartService.getTotalCost();
-    console.log(this.disabled);
+    this.userDetails = this.cartService.getUserDetails();
+    // console.log(this.disabled);
   }
 
   updateQuantity(id: number, quantity: number | undefined) {
     this.total = this.cartService.getTotalCost();
+  }
+
+  updateDisabled() {
+    this.disabled =
+      this.userDetails.address.length < 6 ||
+      this.userDetails.creditCard.length < 16 ||
+      this.userDetails.fullName.length < 3;
+  }
+
+  submitOrder() {
+    this.router.navigate(['/order-success']);
   }
 }

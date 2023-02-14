@@ -10,6 +10,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     ProductItemComponent,
     ProductItemDetailComponent,
     ProductListComponent,
+    OrderSuccessComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
