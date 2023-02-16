@@ -49,6 +49,10 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder() {
-    this.router.navigate(['/order-success']);
+    if (isNaN(+this.userDetails.creditCard)) {
+      alert('Invalid credit card number');
+    } else {
+      this.router.navigate(['/order-success']);
+    }
   }
 }
