@@ -16,8 +16,18 @@ export class CartService {
   constructor() {}
 
   addToCart(item: Product) {
-    this.cartItems.push(item);
-    console.log(this.cartItems);
+    // Check if product already exists in cart
+    const index = this.cartItems.findIndex((cartItem) => {
+      return cartItem.id === item.id;
+    });
+
+    if (index !== -1) {
+      this.cartItems[index].quantity! += item.quantity!;
+      return;
+    } else {
+      this.cartItems.push(item);
+      console.log(this.cartItems);
+    }
   }
 
   getCart() {
