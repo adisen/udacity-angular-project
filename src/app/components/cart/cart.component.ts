@@ -33,6 +33,11 @@ export class CartComponent implements OnInit {
   }
 
   updateQuantity(id: number, quantity: number | undefined) {
+    if (quantity === 0) {
+      alert('Produc removed from cart');
+      this.cartService.removeFromCart(id);
+      this.cart = this.cartService.getCart();
+    }
     this.total = this.cartService.getTotalCost();
   }
 
